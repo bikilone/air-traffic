@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 
 import "./main-page-css/main-page.css"
 
-
-
 export default class MainPage extends React.Component {
     constructor() {
         super()
@@ -27,7 +25,7 @@ export default class MainPage extends React.Component {
     },{
         direction: "west",
         height: 112944,
-        flightCode: <Link to="/landingPage">3234</Link>,
+        flightCode: <Link to="/detailsPage">3234</Link>,
     },{
         direction: "west",
         height: 2944,
@@ -36,7 +34,8 @@ export default class MainPage extends React.Component {
 
     render() {
         return (
-            <ReactTable className="table"
+            <div className="table">
+            <ReactTable 
                 data={this.data}
                
                 defaultSorted={[{ // the sorting model for the table
@@ -56,11 +55,12 @@ export default class MainPage extends React.Component {
                                 accessor: "flightCode"
                             }
                         ]}
-                  
+                
                 defaultPageSize={this.data.length}
                 className="-striped -highlight"
                 showPagination={false}
             />
+            </div>
         )
     }
 

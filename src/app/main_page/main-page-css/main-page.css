@@ -1,3 +1,7 @@
 .rt-td {
     text-align: center;
 }
+
+.ReactTable {
+    margin: 0 auto;
+}
