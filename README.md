@@ -20,7 +20,9 @@ Structure:
 
               partials/
                   partials_css/
-                  
+                  footer.js
+                  header.js
+
           entites/
 
           services/
