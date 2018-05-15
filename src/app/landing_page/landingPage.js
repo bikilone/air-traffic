@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";    
 
 import Header from "../partials/header";
-// import "./landing-page.css/landing-page.css"
+
 
 class LandingPage extends React.Component {
     constructor() {

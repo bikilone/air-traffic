@@ -9,7 +9,34 @@ import DetailsPage from "./details_page/detailsPage"
 
 
 class App extends Component {
+    constructor(props) {
+      super(props)
+      
+      this.state = {
+        lattitude: "",
+        longitude: ""
+      }
+    }
+
+  componentWillMount() {
+    /// getting user geolocation 
+  const geoLocation = () => {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log(position.coords.latitude, position.coords.longitude);
+        this.setState({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+        })
+      });
+
+   
   
+    }
+
+
+  }
+
+
   render() {
     return (
       <React.Fragment>
