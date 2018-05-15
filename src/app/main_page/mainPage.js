@@ -1,18 +1,22 @@
-import React from "react";
+import React, { Component} from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { Link } from "react-router-dom";
 
+
+
 import "./main-page-css/main-page.css"
 
-export default class MainPage extends React.Component {
-    constructor() {
-        super()
+export default class MainPage extends Component {
+    constructor(props) {
+        super(props)
         this.state = {
             data: ["a", "b"]
         }
 
     }
+
+  
 
     data=[{
         direction: <i class="fas fa-plane"></i>,
@@ -31,6 +35,8 @@ export default class MainPage extends React.Component {
         height: 2944,
         flightCode: 123434543,
     }]
+
+    
 
     render() {
         return (
