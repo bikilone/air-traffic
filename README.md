@@ -1,3 +1,52 @@
+To start application:
+      npm start
+
+Structure:
+
+  air-traffic/
+      node_modules/
+      public/
+          index.html
+      src/
+          app/
+              landing_page/
+                  landing_page_css/
+
+              main_page/
+                  main_page_css/
+                  
+              details_page/
+                  details_page_css/
+
+              partials/
+                  partials_css/
+                  
+          entites/
+
+          services/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
