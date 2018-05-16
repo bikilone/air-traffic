@@ -32,7 +32,7 @@ export default class MainPage extends Component {
             const obj = {
                 direction: <i id="icon" class="fas fa-plane" style={this.direction(element.direction)}></i>,
                 height: element.altitude || "n/a",
-                flightCode: <Link to={`/detailsPage/${element.flightId}`} >{element.flightId || "n/a"}</Link>
+                flightCode: element.flightId ? <Link to={`/detailsPage/${element.flightId}`} >{element.flightId}</Link>  : "n/a"
             }
             data.push(obj);
         });  

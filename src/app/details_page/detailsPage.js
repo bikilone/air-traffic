@@ -34,11 +34,6 @@ export default class DetailsPage extends React.Component {
       
     }
     render() {
-   
-    
-    console.log(this.state.filteredData[0]);
-    
-      
         return (
             <div id="card" class="card col-12  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{width: 18 + "rem"}}>
   <img id="img-details" class="card-img-top" src={"https://logo.clearbit.com/"+this.state.filteredData[0].logo} onError={(e)=>{ this.onerror=null;

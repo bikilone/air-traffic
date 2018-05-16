@@ -1,14 +1,16 @@
+const error = "n/a"
+
 class AirplaneData {
     constructor(data) {
         this.flightId = data.Call;
-        this.altitude = data.Alt;
-        this.type = data.Type;
-        this.manufactor = data.Man;
-        this.departure = data.From;
-        this.arrival = data.To;
-        this.direction = data.Trak;
-        this.logo = data.Op.split(' ').join('').concat('.com').toLowerCase();
-        this.direction = data.Trak;
+        this.altitude = data.Alt || error;
+        this.type = data.Type || error;
+        this.manufactor = data.Man || error;
+        this.departure = data.From || error;
+        this.arrival = data.To || error;
+        this.direction = data.Trak || error;
+        this.logo = data.Op? data.Op.split(' ').join('').concat('.com').toLowerCase() : error;
+        this.direction = data.Trak || 0;
     }
 }
 

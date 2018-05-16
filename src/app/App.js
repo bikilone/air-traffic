@@ -7,6 +7,7 @@ import LandingPage from "./landing_page/landingPage";
 import MainPage from "./main_page/mainPage"
 import DetailsPage from "./details_page/detailsPage"
 import { dataService } from "../services/dataService";
+import ErrorPage from "./error_page/errorPage"
 
 
 class App extends Component {
@@ -18,8 +19,21 @@ class App extends Component {
       data: []
     }
   }
+
+  componentDidMount() {
+    if (!window.navigator) {
+      window.location.replace("../#/error")
+    }
+  }
+
   geoLocation = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
+    
+    navigator.geolocation.watchPosition((position) => {
+
+      /// on success redirect to main page
+      window.location.replace("../#/mainPage/")
+
+      // getting lat and long
         var latitude = position.coords.latitude,
               longitude = position.coords.longitude
               this.setState({
@@ -27,17 +41,26 @@ class App extends Component {
                   longitude: longitude
               })
            const fetching = dataService.fetching.bind(this, latitude, longitude);
+
+           /// fetching first time
            fetching();
-            setInterval(fetching, 60000);
+
+           // and fetching on every minute
+            setInterval(fetching, 100);
               
               
-            });
-           
-            
+            },
+
+            /// handling user denial to share position
+            (error) => {
+              window.location.replace("../#/error/")
+             
+            })
+                   
 }
   render() {
+  
     
-    console.log(this.state.data);
     
     return (
       <React.Fragment>
@@ -50,6 +73,7 @@ class App extends Component {
          <Route path="/mainPage" render={()=><MainPage lat={this.state.latitude} lon={this.state.longitude} data={this.state.data}/>} />
          <Route path="/landingPage" render={()=><LandingPage geolocation={this.geoLocation}/>}/> 
          <Route exact path="/detailsPage/:id" render={(props)=><DetailsPage {...props} data={this.state.data}/>}/> 
+         <Route path="/error" component={ErrorPage}/>
 
           </div>
         </main>
