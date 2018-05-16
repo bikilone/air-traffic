@@ -20,8 +20,8 @@ export default class MainPage extends Component {
         this.props.data.forEach(element => {
             const obj = {
                 direction: <i class="fas fa-plane"></i>,
-                height: element.altitude,
-                flightCode: <Link to={`/detailsPage/${element.flightId}`} >{element.flightId}</Link>
+                height: element.altitude || "n/a",
+                flightCode: <Link to={`/detailsPage/${element.flightId}`} >{element.flightId || "n/a"}</Link>
             }
             data.push(obj);
         });  

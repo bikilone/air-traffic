@@ -11,7 +11,8 @@ export default class DetailsPage extends React.Component {
             departure: "",
             arrival: "",
             manufactor: "",
-            type: ""
+            type: "",
+            logo: ""
 
           }]
         }
@@ -40,7 +41,7 @@ export default class DetailsPage extends React.Component {
       
         return (
             <div id="card" class="card col-8 offset-2 offest-2 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{width: 18 + "rem"}}>
-  <img class="card-img-top" src="https://logo.clearbit.com/britishairways.com?s=128" alt="Card image cap"/>
+  <img class="card-img-top" src={"https://logo.clearbit.com/"+this.state.filteredData[0].logo} alt={this.state.filteredData[0].logo}/>
   <div class="card-body">
   <table class="table table-dark col-12">
   <thead>

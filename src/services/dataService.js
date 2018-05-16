@@ -22,19 +22,12 @@ class DataService {
             data: "lat="+ lat + "&" + "lng=" + lng + "&fDstL=0&fDstU=100"
         })
         .done((response) => {        
+            console.log(response);
+            
+            
             response.acList.forEach(element => {
                array.push(new AirplaneData(element)); 
-               
             });
-         
-            // array.forEach(element => {
-            //     const obj = {
-            //         direction: <i class="fas fa-plane"></i>,
-            //         height: element.altitude,
-            //         flightCode: <Link to={`/detailsPage/${element.flightId}`} >{element.flightId}</Link>
-            //     }
-            //     data.push(obj);
-            // });  
             
             this.setState({
                 data: array

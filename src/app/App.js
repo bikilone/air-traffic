@@ -27,7 +27,8 @@ class App extends Component {
                   longitude: longitude
               })
            const fetching = dataService.fetching.bind(this, latitude, longitude);
-            fetching()
+           fetching();
+            setInterval(fetching, 60000);
               
               
             });
@@ -36,6 +37,7 @@ class App extends Component {
 }
   render() {
     
+    console.log(this.state.data);
     
     return (
       <React.Fragment>
