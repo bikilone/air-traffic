@@ -75,7 +75,7 @@ class App extends Component {
           
          <Redirect from="/" to="/landingPage"/>
          <Route path="/mainPage" render={()=><MainPage lat={this.state.latitude} lon={this.state.longitude} data={this.state.data}/>} />
-         <Route path="/landingPage" render={()=><LandingPage geolocation={this.geoLocation}/>}/> 
+         <Route exact path="/landingPage" render={(props)=><LandingPage geolocation={this.geoLocation}/>}/> 
          <Route exact path="/detailsPage/:id" render={(props)=><DetailsPage {...props} data={this.state.data}/>}/> 
          <Route path="/error" component={ErrorPage}/>
           

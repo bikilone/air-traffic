@@ -14,6 +14,8 @@ export default class MainPage extends Component {
 
     }
 
+    
+
 
     /// direction (west vs east)
 

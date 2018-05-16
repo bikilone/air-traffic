@@ -24,7 +24,6 @@ class DataService {
             data: "lat="+ lat + "&" + "lng=" + lng + "&fDstL=0&fDstU=100"
         })
         .done((response) => { 
-            
             response.acList.forEach(element => {
                array.push(new AirplaneData(element)); 
             });

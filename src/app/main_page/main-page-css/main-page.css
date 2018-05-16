@@ -4,6 +4,7 @@
 
 .ReactTable {
     margin: 0 auto;
+    margin-top: 20px;
 }
 
 .animation {
@@ -15,4 +16,5 @@
     background-color: red;
     color: white;
     text-align: center;
+    z-index: 1;
 }

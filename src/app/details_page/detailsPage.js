@@ -23,9 +23,9 @@ export default class DetailsPage extends React.Component {
       this.setState({
         filteredData: this.findId()
       })
-     
-      
+  
     }
+        
     // searching for id that matches url
     findId = () => {
     const filter =  this.props.data.filter( (element) => {
