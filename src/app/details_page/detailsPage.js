@@ -1,19 +1,50 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import "./details-page-css/details-page.css"
 
 export default class DetailsPage extends React.Component {
-    constructor() {
-        super() 
+    constructor(props) {
+        super(props) 
+        this.state = {
+          filteredData: [{
+            departure: "",
+            arrival: "",
+            manufactor: "",
+            type: "",
+            logo: ""
 
+          }]
+        }
     }
+    id = this.props.match.params.id;
 
+    componentDidMount() {
+      this.setState({
+        filteredData: this.findId()
+      })
+     
+      
+    }
+    findId = () => {
+    const filter =  this.props.data.filter( (element) => {
+        return (element.flightId == this.id)
+      })
+      return filter;
+      
+    }
     render() {
+   
+    
+    console.log(this.state.filteredData[0]);
+    
+      
         return (
-            <div id="card" class="card col-8 offset-2 offest-2 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{width: 18 + "rem"}}>
-  <img class="card-img-top" src="https://logo.clearbit.com/britishairways.com?s=128" alt="Card image cap"/>
+            <div id="card" class="card col-12  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{width: 18 + "rem"}}>
+  <img id="img-details" class="card-img-top" src={"https://logo.clearbit.com/"+this.state.filteredData[0].logo} onError={(e)=>{ this.onerror=null;
+  e.target.src="https://www.vectorportal.com/img_novi/boeing-767-silhouette.jpg"}} alt={this.state.filteredData[0].logo}/>
   <div class="card-body">
-  <table class="table table-dark col-12">
+  <table class="table table-dark col-12 font">
   <thead>
     <tr>
       <th scope="col">Departure</th>
@@ -22,8 +53,8 @@ export default class DetailsPage extends React.Component {
   </thead>
   <tbody>
     <tr>
-      <td>BGD </td>
-      <td>LND</td>
+      <td>{this.state.filteredData[0].departure || "n/a"}</td>
+      <td>{this.state.filteredData[0].arrival || "n/a"}</td>
     </tr>
 
   </tbody>
@@ -37,8 +68,8 @@ export default class DetailsPage extends React.Component {
   </thead>
   <tbody>
     <tr>
-      <td>Boing</td>
-      <td>737</td>
+      <td>{this.state.filteredData[0].manufactor || "n/a"}</td>
+      <td>{this.state.filteredData[0].type || "n/a"}</td>
     </tr>
 
   </tbody>

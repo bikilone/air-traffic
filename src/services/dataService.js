@@ -1,19 +1,45 @@
-
+import axios from "axios";
+import React from "react";
+import $ from "jquery";
+import AirplaneData from "../entites/AirplaneData";
+import { Link } from "react-router-dom";
 
 const url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json";
 
 
 class DataService {
     
-    geoLocation = () => {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          console.log(position.coords.latitude, position.coords.longitude);
-          this.setState({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude
-          })
-        });
+    /// fetching all data
+    /// using regular function for binding later
+
+     fetching(lat, lng) {
+        const array = [];
+        const data = [];
+        $.ajax({
+            type: 'GET',
+            dataType: 'jsonp',
+            url: url,
+            data: "lat="+ lat + "&" + "lng=" + lng + "&fDstL=0&fDstU=100"
+        })
+        .done((response) => {        
+            console.log(response);
+            
+            
+            response.acList.forEach(element => {
+               array.push(new AirplaneData(element)); 
+            });
+            
+            this.setState({
+                data: array
+            })
+            
+            
+            
+        }
+        )   
     
-      }
+    }
     
 }
+
+export const dataService = new DataService;
