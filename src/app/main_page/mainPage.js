@@ -10,13 +10,11 @@ import "./main-page-css/main-page.css"
 export default class MainPage extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            data: ["a", "b"]
-        }
-
+       
     }
 
-  
+   
+
 
     data=[{
         direction: <i class="fas fa-plane"></i>,
@@ -39,10 +37,12 @@ export default class MainPage extends Component {
     
 
     render() {
+        console.log(this.props.data);
+        
         return (
             <div className="table">
             <ReactTable 
-                data={this.data}
+                data={this.props.data}
                
                 defaultSorted={[{ // the sorting model for the table
                     id: 'height',

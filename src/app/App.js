@@ -14,7 +14,8 @@ class App extends Component {
     super(props) 
     this.state={
       latitude: "",
-      longitude: ""
+      longitude: "",
+      data: []
     }
   }
   geoLocation = () => {
@@ -25,15 +26,17 @@ class App extends Component {
                   latitude: latitude,
                   longitude: longitude
               })
-              console.log(this.state);
-              console.log(dataService.fetching(this.state.latitude, this.state.longitude))
-              
+           const fetching = dataService.fetching.bind(this, latitude, longitude);
+            fetching()
               
               
             });
+           
             
 }
   render() {
+    console.log(this.state.data);
+    
     return (
       <React.Fragment>
         <header className="App-header">
@@ -43,7 +46,7 @@ class App extends Component {
           <div className="row">
       
          <Redirect from="/" to="/landingPage"/>
-         <Route path="/mainPage" render={()=><MainPage position={this.state}/>} />
+         <Route path="/mainPage" render={()=><MainPage lat={this.state.latitude} lon={this.state.longitude} data={this.state.data}/>} />
          <Route path="/landingPage" render={()=><LandingPage geolocation={this.geoLocation}/>}/>
          <Route path="/detailsPage" component={DetailsPage}/>
           </div>
