@@ -66,23 +66,21 @@ class App extends Component {
     
     
     return (
+      
       <React.Fragment>
         <header className="App-header">
           <Header/>
         </header>
         <main className="container">
           <div className="row">
-          
+         <Redirect from="/" to="/landingPage" /> 
          <Route path="/mainPage" render={()=><MainPage lat={this.state.latitude} lon={this.state.longitude} data={this.state.data}/>} />
-         <Route exact path="/landingPage" render={(props)=><LandingPage geolocation={this.geoLocation}/>}/> 
-         <Route exact path="/detailsPage/:id" render={(props)=><DetailsPage {...props} data={this.state.data}/>}/> 
+         <Route  path="/landingPage" render={(props)=><LandingPage geolocation={this.geoLocation}/>}/> 
+         <Route  path="/detailsPage/:id" render={(props)=><DetailsPage {...props} data={this.state.data}/>}/> 
          <Route path="/error" component={ErrorPage}/>
-         <Redirect from="/" to="/landingPage"/>
-          
-
           </div>
         </main>
-        </React.Fragment>
+        </React.Fragment> 
     );
   }
 }
