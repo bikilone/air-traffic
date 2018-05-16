@@ -13,36 +13,30 @@ export default class MainPage extends Component {
        
     }
 
-   
 
-
-    data=[{
-        direction: <i class="fas fa-plane"></i>,
-        height: 12944,
-        flightCode: 123434543,
-    }, {
-        direction: "west",
-        height: 12944,
-        flightCode: 123434543,
-    },{
-        direction: "west",
-        height: 112944,
-        flightCode: <Link to="/detailsPage">3234</Link>,
-    },{
-        direction: "west",
-        height: 2944,
-        flightCode: 123434543,
-    }]
-
+    /// packing data for table look
+    packingData = () => {
+        const data = [];
+        this.props.data.forEach(element => {
+            const obj = {
+                direction: <i class="fas fa-plane"></i>,
+                height: element.altitude,
+                flightCode: <Link to={`/detailsPage/${element.flightId}`} >{element.flightId}</Link>
+            }
+            data.push(obj);
+        });  
+        return data;
+    }
     
 
     render() {
-        console.log(this.props.data);
         
+        let packed = [];
+        packed = this.packingData();
         return (
             <div className="table">
             <ReactTable 
-                data={this.props.data}
+                data={packed}
                
                 defaultSorted={[{ // the sorting model for the table
                     id: 'height',
@@ -62,9 +56,11 @@ export default class MainPage extends Component {
                             }
                         ]}
                 
-                defaultPageSize={this.data.length}
+                // defaultPageSize={(packed) => packed.length}
                 className="-striped -highlight"
                 showPagination={false}
+                // pageSizeOptions={this.props.data.length}
+                pageSize={this.props.data.length}
             />
             </div>
         )

@@ -1,7 +1,8 @@
 import axios from "axios";
 import React from "react";
 import $ from "jquery";
-import AirplaneData from "../entites/AirplaneData"
+import AirplaneData from "../entites/AirplaneData";
+import { Link } from "react-router-dom";
 
 const url = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json";
 
@@ -26,17 +27,17 @@ class DataService {
                
             });
          
-            array.forEach(element => {
-                const obj = {
-                    direction: <i class="fas fa-plane"></i>,
-                    height: element.altitude,
-                    flightCode: element.flightId
-                }
-                data.push(obj);
-            });  
+            // array.forEach(element => {
+            //     const obj = {
+            //         direction: <i class="fas fa-plane"></i>,
+            //         height: element.altitude,
+            //         flightCode: <Link to={`/detailsPage/${element.flightId}`} >{element.flightId}</Link>
+            //     }
+            //     data.push(obj);
+            // });  
             
             this.setState({
-                data: data
+                data: array
             })
             
             

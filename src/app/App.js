@@ -35,7 +35,7 @@ class App extends Component {
             
 }
   render() {
-    console.log(this.state.data);
+    
     
     return (
       <React.Fragment>
@@ -44,11 +44,11 @@ class App extends Component {
         </header>
         <main className="container">
           <div className="row">
-      
          <Redirect from="/" to="/landingPage"/>
          <Route path="/mainPage" render={()=><MainPage lat={this.state.latitude} lon={this.state.longitude} data={this.state.data}/>} />
-         <Route path="/landingPage" render={()=><LandingPage geolocation={this.geoLocation}/>}/>
-         <Route path="/detailsPage" component={DetailsPage}/>
+         <Route path="/landingPage" render={()=><LandingPage geolocation={this.geoLocation}/>}/> 
+         <Route exact path="/detailsPage/:id" render={(props)=><DetailsPage {...props} data={this.state.data}/>}/> 
+
           </div>
         </main>
         </React.Fragment>
