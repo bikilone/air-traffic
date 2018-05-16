@@ -3,7 +3,7 @@ import "./partial_css/header.css"
 
 const Header = () => {
     return (
-        <h1 className="header">Welcome!</h1>
+        <h1 className="header">QuantoxAir</h1>
     )
 }
 

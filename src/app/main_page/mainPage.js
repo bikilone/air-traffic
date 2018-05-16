@@ -14,6 +14,8 @@ export default class MainPage extends Component {
 
     }
 
+    
+
 
     /// direction (west vs east)
 
@@ -32,7 +34,7 @@ export default class MainPage extends Component {
         this.props.data.forEach(element => {
             const obj = {
                 direction: <i id="icon" className="fas fa-plane" style={this.direction(element.direction)}></i>,
-                height: element.altitude || "n/a",
+                altitude: element.altitude || "n/a",
                 flightCode: element.flightId ? <Link to={`/detailsPage/${element.flightId}`} >{element.flightId}</Link> : "n/a"
             }
             data.push(obj);
@@ -63,8 +65,8 @@ export default class MainPage extends Component {
                                 accessor: "direction"
                             }, {
 
-                                Header: "Height",
-                                accessor: "height"
+                                Header: "Altitude",
+                                accessor: "altitude"
                             }, {
                                 Header: "FlightCode",
                                 accessor: "flightCode"
