@@ -11,21 +11,28 @@ Structure:
           app/
               landing_page/
                   landing_page_css/
+                  landingPage.js
 
               main_page/
                   main_page_css/
-                  
+                  mainPage.js
+
               details_page/
                   details_page_css/
+                  detailsPage.js
 
               partials/
                   partials_css/
-                  footer.js
                   header.js
 
+              error_page/
+                  error_page_css/
+                  errorPage.js
+          App.js
           entites/
-
+              AirplaneData.js
           services/
+              dataService.js
 
 
 
