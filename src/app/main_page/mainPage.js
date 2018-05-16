@@ -14,14 +14,25 @@ export default class MainPage extends Component {
     }
 
 
+    /// direction (west vs east)
+
+    direction = (direction) => {
+        const style = {
+            transform: "rotate(180deg)"
+        }
+        if (direction > 180) {
+           return style;
+        }
+    }
+  
     /// packing data for table look
     packingData = () => {
         const data = [];
         this.props.data.forEach(element => {
             const obj = {
-                direction: <i class="fas fa-plane"></i>,
+                direction: <i id="icon" class="fas fa-plane" style={this.direction(element.direction)}></i>,
                 height: element.altitude || "n/a",
-                flightCode: <Link to={`/detailsPage/${element.flightId}`} >{element.flightId || "n/a"}</Link>
+                flightCode: element.flightId ? <Link to={`/detailsPage/${element.flightId}`} >{element.flightId}</Link>  : "n/a"
             }
             data.push(obj);
         });  

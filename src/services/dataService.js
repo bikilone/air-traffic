@@ -15,28 +15,27 @@ class DataService {
      fetching(lat, lng) {
         const array = [];
         const data = [];
+
+        /// using ajax and jsonp because of CORS policy
         $.ajax({
             type: 'GET',
             dataType: 'jsonp',
             url: url,
-            data: "lat="+ lat + "&" + "lng=" + lng + "&fDstL=0&fDstU=100"
+            data: "lat="+ lat + "&" + "lng=" + lng + "&fDstL=0&fDstU=1000"
         })
         .done((response) => {        
-            console.log(response);
-            
-            
             response.acList.forEach(element => {
                array.push(new AirplaneData(element)); 
             });
             
             this.setState({
                 data: array
-            })
-            
-            
-            
+            })  
         }
-        )   
+        ) 
+        .fail((response)=> {
+            console.log(response);
+        })  
     
     }
     
