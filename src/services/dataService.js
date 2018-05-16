@@ -24,6 +24,8 @@ class DataService {
             data: "lat="+ lat + "&" + "lng=" + lng + "&fDstL=0&fDstU=100"
         })
         .done((response) => { 
+             /// showing error message
+            
             response.acList.forEach(element => {
                array.push(new AirplaneData(element)); 
             });
@@ -34,7 +36,7 @@ class DataService {
         }) 
         .fail((response)=> {
             /// showing error message
-            $(".animation").animate({
+            $(".animation").show().animate({
                 marginRight: "0px"
             }, 1000).delay(1000).animate({
                 marginRight: "-100px"

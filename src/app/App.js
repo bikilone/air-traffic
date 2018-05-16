@@ -54,7 +54,7 @@ class App extends Component {
     fetching();
 
     // and fetching on every minute
-    setInterval(fetching, 60000);
+    setInterval(fetching, 6000);
   }
 
   geoLocation = () => {

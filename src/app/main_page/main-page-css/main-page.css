@@ -9,9 +9,10 @@
 
 .animation {
     position: absolute;
+    display: none;
     right: 0;
     width: 100px;
-    margin-right: -100px;
+    margin-right: -150px;
     border: 1px solid red;
     background-color: red;
     color: white;
