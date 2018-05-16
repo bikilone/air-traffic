@@ -56,7 +56,7 @@ export default class MainPage extends Component {
                     <ReactTable
                         data={packed}
                         defaultSorted={[{ // the sorting model for the table
-                            id: 'height',
+                            id: 'altitude',
                             desc: true
                         }]}
                         columns={[
