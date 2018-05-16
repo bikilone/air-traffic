@@ -26,7 +26,9 @@ class App extends Component {
                   longitude: longitude
               })
               console.log(this.state);
-              dataService.fetching(this.state.latitude, this.state.longitude)
+              console.log(dataService.fetching(this.state.latitude, this.state.longitude))
+              
+              
               
             });
             
