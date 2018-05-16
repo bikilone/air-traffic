@@ -4,11 +4,11 @@ To start application:
 Structure:
 
   air-traffic/
-      node_modules/
-      public/
-          index.html
-      src/
-          app/
+        node_modules/
+        public/
+              index.html
+        src/
+            app/
               landing_page/
                   landing_page_css/
                   landingPage.js

@@ -29,7 +29,7 @@ export default class DetailsPage extends React.Component {
     // searching for id that matches url
     findId = () => {
     const filter =  this.props.data.filter( (element) => {
-        return (element.flightId == this.id)
+        return (element.flightId === this.id)
       })
       return filter;
       
@@ -37,7 +37,7 @@ export default class DetailsPage extends React.Component {
     render() {
         return (
             <div id="card" className="card col-12  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{width: 18 + "rem"}}>
-  <img id="img-details" className="card-img-top" src={"https://logo.clearbit.com/"+this.state.filteredData[0].logo} onError={(e)=>{ this.onerror=null;
+  <img id="img-details" className="card-img-top" src={"https://logo.clearbit.com/"+this.state.filteredData[0].logo} onError={(e)=>{ 
   e.target.src="https://www.vectorportal.com/img_novi/boeing-767-silhouette.jpg"}} alt={this.state.filteredData[0].logo}/>
   <div className="card-body">
   <table className="table table-dark col-12 font">

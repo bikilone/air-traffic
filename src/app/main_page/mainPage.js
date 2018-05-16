@@ -31,7 +31,7 @@ export default class MainPage extends Component {
         const data = [];
         this.props.data.forEach(element => {
             const obj = {
-                direction: <i id="icon" class="fas fa-plane" style={this.direction(element.direction)}></i>,
+                direction: <i id="icon" className="fas fa-plane" style={this.direction(element.direction)}></i>,
                 height: element.altitude || "n/a",
                 flightCode: element.flightId ? <Link to={`/detailsPage/${element.flightId}`} >{element.flightId}</Link> : "n/a"
             }

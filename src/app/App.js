@@ -21,8 +21,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+
+
     if (!window.navigator) {
-      window.location.replace("../#/error")
+      window.location.replace("../#/error");
     }
   }
 
@@ -32,14 +34,15 @@ class App extends Component {
 
       /// on success redirect to main page
       window.location.replace("../#/mainPage/")
-
       // getting lat and long
-        var latitude = position.coords.latitude,
-              longitude = position.coords.longitude
-              this.setState({
-                  latitude: latitude,
-                  longitude: longitude
-              })
+      var latitude = position.coords.latitude,
+      longitude = position.coords.longitude
+      this.setState({
+        latitude: latitude,
+        longitude: longitude
+      })
+      localStorage.setItem("lat", "positon.coords.latitude");
+      localStorage.setItem("lon", "positon.coords.longitude");
            const fetching = dataService.fetching.bind(this, latitude, longitude);
 
            /// fetching first time
@@ -69,11 +72,13 @@ class App extends Component {
         </header>
         <main className="container">
           <div className="row">
+          
          <Redirect from="/" to="/landingPage"/>
          <Route path="/mainPage" render={()=><MainPage lat={this.state.latitude} lon={this.state.longitude} data={this.state.data}/>} />
          <Route path="/landingPage" render={()=><LandingPage geolocation={this.geoLocation}/>}/> 
          <Route exact path="/detailsPage/:id" render={(props)=><DetailsPage {...props} data={this.state.data}/>}/> 
          <Route path="/error" component={ErrorPage}/>
+          
 
           </div>
         </main>
