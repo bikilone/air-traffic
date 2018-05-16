@@ -8,6 +8,7 @@ class AirplaneData {
         this.arrival = data.To;
         this.direction = data.Trak;
         this.logo = data.Op.split(' ').join('').concat('.com').toLowerCase();
+        this.direction = data.Trak;
     }
 }
 
