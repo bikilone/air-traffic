@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import Header from "../partials/header";
+import "./landing-page_css/landing-page.css"
 
 
 class LandingPage extends Component {
@@ -18,7 +19,7 @@ class LandingPage extends Component {
                 <p>We need to use your geolocation in order to locate planes near you</p>
                 <div className="buttons row justify-content-around">
                 <button onClick={this.props.geolocation} className="col-4 buttons btn btn-success">I`m ok with that</button>
-                <button className="buttons col-4 btn btn-danger" onClick={()=>{window.location.replace("../#/error/")}}>I`m not ok with that</button>
+                <button className="buttons col-4 btn btn-danger" onClick={()=>{window.location.assign("../#/error/")}}>I`m not ok with that</button>
                 </div>
             </div>
             

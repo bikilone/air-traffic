@@ -9,7 +9,7 @@ class AirplaneData {
         this.departure = data.From || error;
         this.arrival = data.To || error;
         this.direction = data.Trak || error;
-        this.logo = data.Op? data.Op.split(' ').join('').concat('.com').toLowerCase() : error;
+        this.logo = data.Op ? data.Op.split(' ').join('').concat('.com').toLowerCase() : error;
         this.direction = data.Trak || 0;
     }
 }

@@ -3,11 +3,14 @@
     text-align: center;
     margin-top: 100px;
     padding-bottom: 20px;
+    padding-top: 10px;
+    border-radius: 10px;
 }
 
 .landing > p {
     font-size: 25px;
     word-wrap: break-word;
+    color: white;
 }
 
 .buttons {

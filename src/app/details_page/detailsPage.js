@@ -26,6 +26,7 @@ export default class DetailsPage extends React.Component {
      
       
     }
+    // searching for id that matches url
     findId = () => {
     const filter =  this.props.data.filter( (element) => {
         return (element.flightId == this.id)
@@ -35,11 +36,11 @@ export default class DetailsPage extends React.Component {
     }
     render() {
         return (
-            <div id="card" class="card col-12  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{width: 18 + "rem"}}>
-  <img id="img-details" class="card-img-top" src={"https://logo.clearbit.com/"+this.state.filteredData[0].logo} onError={(e)=>{ this.onerror=null;
+            <div id="card" className="card col-12  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{width: 18 + "rem"}}>
+  <img id="img-details" className="card-img-top" src={"https://logo.clearbit.com/"+this.state.filteredData[0].logo} onError={(e)=>{ this.onerror=null;
   e.target.src="https://www.vectorportal.com/img_novi/boeing-767-silhouette.jpg"}} alt={this.state.filteredData[0].logo}/>
-  <div class="card-body">
-  <table class="table table-dark col-12 font">
+  <div className="card-body">
+  <table className="table table-dark col-12 font">
   <thead>
     <tr>
       <th scope="col">Departure</th>
@@ -54,7 +55,7 @@ export default class DetailsPage extends React.Component {
 
   </tbody>
 </table>
-<table class="table table-dark col-12">
+<table className="table table-dark col-12">
   <thead>
     <tr>
       <th scope="col">Manufactor</th>
@@ -69,7 +70,7 @@ export default class DetailsPage extends React.Component {
 
   </tbody>
 </table>
-    <a id="go-back" href="#/mainPage" class="btn col-4 offset-4  offset-sm-4 btn-primary">Go back</a>
+    <a id="go-back" href="#/mainPage" className="btn col-4 offset-4  offset-sm-4 btn-primary">Go back</a>
   </div>
 </div>
         )
