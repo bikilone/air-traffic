@@ -11,11 +11,10 @@
     position: absolute;
     right: 0;
     width: 100px;
-    margin-right: -150px;
+    margin-right: -100px;
     border: 1px solid red;
     background-color: red;
     color: white;
     text-align: center;
-    z-index: 5;
-    /* display: none; */
+    z-index: 1;
 }
