@@ -7,11 +7,8 @@ import "./landing-page_css/landing-page.css"
 
 class LandingPage extends Component {
     constructor(props) {
-        super(props)
-       
-    }
-       
-    
+        super(props)       
+    }    
     
     render() {
         return (
@@ -21,10 +18,8 @@ class LandingPage extends Component {
                 <button onClick={this.props.geolocation} className="col-4 buttons btn btn-success">I`m ok with that</button>
                 <button className="buttons col-4 btn btn-danger" onClick={()=>{window.location.assign("../#/error/")}}>I`m not ok with that</button>
                 </div>
-            </div>
-            
+            </div>            
         )
-
     }
 }
 

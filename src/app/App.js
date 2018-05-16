@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from "react-router-dom"
+import { Route, Switch, Redirect, withRouter } from "react-router-dom"
 import '../App.css';
 
 import Header from "./partials/header";
@@ -12,8 +12,8 @@ import ErrorPage from "./error_page/errorPage"
 
 class App extends Component {
   constructor(props) {
-    super(props) 
-    this.state={
+    super(props)
+    this.state = {
       latitude: "",
       longitude: "",
       data: []
@@ -21,74 +21,85 @@ class App extends Component {
   }
 
   componentDidMount() {
-
-
     if (!window.navigator) {
-      window.location.replace("../#/error");
+      this.props.history.push('/error');
+    }
+
+    if (localStorage.getItem('lat')) {
+      const lat = parseFloat(localStorage.getItem('lat'))
+      const lon = parseFloat(localStorage.getItem('lon'))
+      
+      this.fetchDataAndRedirect({ latitude: lat, longitude: lon })
+    } else {
+      this.props.history.push('/landingPage')
     }
   }
 
+  fetchDataAndRedirect = (location) => {
+    // on success redirect to main page
+    this.props.history.push('/mainPage')
+
+    // getting lat and long
+    var latitude = location.latitude,
+        longitude = location.longitude
+
+    this.setState({
+      latitude: latitude,
+      longitude: longitude
+    })
+
+    const fetching = dataService.fetching.bind(this, latitude, longitude);
+
+    // fetching first time
+    fetching();
+
+    // and fetching on every minute
+    setInterval(fetching, 60000);
+  }
+
   geoLocation = () => {
-    
+    const that = this
+
     navigator.geolocation.watchPosition((position) => {
-
-      /// on success redirect to main page
-      window.location.replace("../#/mainPage/")
-      // getting lat and long
-      var latitude = position.coords.latitude,
-      longitude = position.coords.longitude
-      this.setState({
-        latitude: latitude,
-        longitude: longitude
+      that.fetchDataAndRedirect({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
       })
-      localStorage.setItem("lat", "positon.coords.latitude");
-      localStorage.setItem("lon", "positon.coords.longitude");
-           const fetching = dataService.fetching.bind(this, latitude, longitude);
 
-           /// fetching first time
-           fetching();
+      localStorage.setItem("lat", position.coords.latitude);
+      localStorage.setItem("lon", position.coords.longitude);
+    },
+    /// handling user denial to share position
+    (error) => {
+      that.props.history.push('/error')
+    })
+  }
 
-           // and fetching on every minute
-            setInterval(fetching, 60000);
-              
-              
-            },
-
-            /// handling user denial to share position
-            (error) => {
-              window.location.replace("../#/error/")
-             
-            })
-                   
-}
   render() {
-  
-    
-    
     return (
-      
       <React.Fragment>
         <header className="App-header">
-          <Header/>
+          <Header />
         </header>
         <main className="container">
           <div className="row">
-         <Redirect from="/" to="/landingPage" /> 
-         <Route path="/mainPage" render={()=><MainPage lat={this.state.latitude} lon={this.state.longitude} data={this.state.data}/>} />
-         <Route  path="/landingPage" render={(props)=><LandingPage geolocation={this.geoLocation}/>}/> 
-         <Route  path="/detailsPage/:id" render={(props)=><DetailsPage {...props} data={this.state.data}/>}/> 
-         <Route path="/error" component={ErrorPage}/>
+          
+            <Route path="/mainPage" render={() => <MainPage lat={this.state.latitude} lon={this.state.longitude} data={this.state.data} />} />
+            <Route exact path="/landingPage" render={(props) => <LandingPage geolocation={this.geoLocation} />} />
+            <Route exact path="/detailsPage/:id" render={(props) => <DetailsPage {...props} data={this.state.data} />} />
+            <Route path="/error" component={ErrorPage} />
+
           </div>
         </main>
-        </React.Fragment> 
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
 
 
 
-  
 
- 
+
+
