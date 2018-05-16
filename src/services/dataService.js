@@ -21,7 +21,7 @@ class DataService {
             type: 'GET',
             dataType: 'jsonp',
             url: url,
-            data: "lat="+ lat + "&" + "lng=" + lng + "&fDstL=0&fDstU=1000"
+            data: "lat="+ lat + "&" + "lng=" + lng + "&fDstL=0&fDstU=100"
         })
         .done((response) => {        
             response.acList.forEach(element => {

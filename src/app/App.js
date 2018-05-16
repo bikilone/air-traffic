@@ -46,7 +46,7 @@ class App extends Component {
            fetching();
 
            // and fetching on every minute
-            setInterval(fetching, 100);
+            setInterval(fetching, 60000);
               
               
             },
