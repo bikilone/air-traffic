@@ -4,4 +4,19 @@
 
 #card {
     height: 80vh;
+    margin-top: 5%;
+}
+
+#img-details {
+    height: 37%;
+}
+
+@media  (max-width: 576px) {
+    #img-details {
+        height: 40%;
+    }
+    #card {
+        margin-top: 10%;
+    }
+
 }

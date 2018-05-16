@@ -40,10 +40,11 @@ export default class DetailsPage extends React.Component {
     
       
         return (
-            <div id="card" class="card col-8 offset-2 offest-2 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{width: 18 + "rem"}}>
-  <img class="card-img-top" src={"https://logo.clearbit.com/"+this.state.filteredData[0].logo} alt={this.state.filteredData[0].logo}/>
+            <div id="card" class="card col-12  col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{width: 18 + "rem"}}>
+  <img id="img-details" class="card-img-top" src={"https://logo.clearbit.com/"+this.state.filteredData[0].logo} onError={(e)=>{ this.onerror=null;
+  e.target.src="https://www.vectorportal.com/img_novi/boeing-767-silhouette.jpg"}} alt={this.state.filteredData[0].logo}/>
   <div class="card-body">
-  <table class="table table-dark col-12">
+  <table class="table table-dark col-12 font">
   <thead>
     <tr>
       <th scope="col">Departure</th>
